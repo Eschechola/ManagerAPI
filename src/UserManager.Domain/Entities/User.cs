@@ -54,7 +54,7 @@ namespace UserManager.Domain.Entities
             if (!validation.IsValid)
             {
                 foreach (var error in validation.Errors)
-                    Errors.Add(error.ErrorMessage);
+                    _errors.Add(error.ErrorMessage);
 
                 throw new DomainException("Alguns campos estão inválidos, por favor corrija-os.", Errors);
             }
