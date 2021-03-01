@@ -23,9 +23,9 @@ namespace Manager.Infra.Mappings{
 
             builder.Property(x => x.Password)
                 .IsRequired()
-                .HasMaxLength(30)
+                .HasMaxLength(1000)
                 .HasColumnName("password")
-                .HasColumnType("VARCHAR(30)");
+                .HasColumnType("VARCHAR(1000)");
 
             builder.Property(x => x.Email)
                 .IsRequired()
