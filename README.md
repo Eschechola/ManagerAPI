@@ -47,3 +47,25 @@ dotnet user-secrets set "Jwt:Password" "[JWT PASSWORD]"
 <pre>
 dotnet user-secrets set "Cryptography" "[CHAVE DE CRIPTOGRAFIA DA APLICAÇÃO]"
 </pre>
+<br>
+<br>
+<br>
+<h3 align="center">Alguns comandos que podem ser úteis :)</h3>
+<br>
+<br>
+<p>Listar todas os segredos de usuário da aplicação.</p>
+<br>
+<pre>
+dotnet user-secrets list
+</pre>
+<br>
+<br>
+<p>Deletar um segredo de usuário da aplicação.</p>
+<br>
+<pre>
+dotnet user-secrets remove "[CHAVE]"
+</pre>
+<br><br>
+<br><br>
+<br><br>
+<p align="center">2021&copy;</p>
