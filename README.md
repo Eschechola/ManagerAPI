@@ -13,6 +13,7 @@
   <li><a href="https://www.youtube.com/watch?v=S9c2rZWYiVY&list=PLdhhExru1TXcTTm-Mpfg2tN5B_rOTNvzy&index=8&ab_channel=LucasEschechola">#5.1 - Criando Nossa Camada de API</a></li>
   <li><a href="https://www.youtube.com/watch?v=B6aOYL2SExA&list=PLdhhExru1TXcTTm-Mpfg2tN5B_rOTNvzy&index=9&ab_channel=LucasEschechola">#5.2 - Adicionando JWT a Nossa API</a></li>
   <li><a href="https://www.youtube.com/watch?v=4wd2lkOObRQ&list=PLdhhExru1TXcTTm-Mpfg2tN5B_rOTNvzy&index=10&ab_channel=LucasEschechola">#6 - Encerramento</a></li>
+  <li><a href="">#7 - [BONUS] Aumentando a Segurança da API</a></li>
 </ol>
 
 <br><br>
