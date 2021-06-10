@@ -1,19 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{03272CCF-C675-4EBE-A400-FD35018161A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.API", "src\1 - Manager.API\Manager.API.csproj", "{18F7B356-2558-48E4-890C-468E8DAD7FC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager.API", "src\1 - Manager.API\Manager.API.csproj", "{18F7B356-2558-48E4-890C-468E8DAD7FC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.Domain", "src\2 - Manager.Domain\Manager.Domain.csproj", "{08FBE022-9C70-4077-842C-D73FBF889EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager.Domain", "src\2 - Manager.Domain\Manager.Domain.csproj", "{08FBE022-9C70-4077-842C-D73FBF889EAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.Services", "src\3 - Manager.Services\Manager.Services.csproj", "{24E50940-2185-4503-B57B-B263BA189626}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager.Services", "src\3 - Manager.Services\Manager.Services.csproj", "{24E50940-2185-4503-B57B-B263BA189626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.Infra", "src\4 - Manager.Infra\Manager.Infra.csproj", "{2FD66AB1-346C-437B-8367-7723D3A1F96A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager.Infra", "src\4 - Manager.Infra\Manager.Infra.csproj", "{2FD66AB1-346C-437B-8367-7723D3A1F96A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager.Core", "src\5 - Manager.Core\Manager.Core.csproj", "{4A6F800D-DA39-490A-A678-009E50BFB85B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager.Core", "src\5 - Manager.Core\Manager.Core.csproj", "{4A6F800D-DA39-490A-A678-009E50BFB85B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Manager.Tests", "src\6 - Manager.Tests\Manager.Tests.csproj", "{EF4E3F09-2708-4660-B030-3D776AE34126}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +25,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{18F7B356-2558-48E4-890C-468E8DAD7FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -88,6 +87,21 @@ Global
 		{4A6F800D-DA39-490A-A678-009E50BFB85B}.Release|x64.Build.0 = Release|Any CPU
 		{4A6F800D-DA39-490A-A678-009E50BFB85B}.Release|x86.ActiveCfg = Release|Any CPU
 		{4A6F800D-DA39-490A-A678-009E50BFB85B}.Release|x86.Build.0 = Release|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Release|x64.Build.0 = Release|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF4E3F09-2708-4660-B030-3D776AE34126}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{18F7B356-2558-48E4-890C-468E8DAD7FC0} = {03272CCF-C675-4EBE-A400-FD35018161A4}
@@ -95,5 +109,9 @@ Global
 		{24E50940-2185-4503-B57B-B263BA189626} = {03272CCF-C675-4EBE-A400-FD35018161A4}
 		{2FD66AB1-346C-437B-8367-7723D3A1F96A} = {03272CCF-C675-4EBE-A400-FD35018161A4}
 		{4A6F800D-DA39-490A-A678-009E50BFB85B} = {03272CCF-C675-4EBE-A400-FD35018161A4}
+		{EF4E3F09-2708-4660-B030-3D776AE34126} = {03272CCF-C675-4EBE-A400-FD35018161A4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {66A726EC-31B2-4972-B9C7-3410F8F3292B}
 	EndGlobalSection
 EndGlobal

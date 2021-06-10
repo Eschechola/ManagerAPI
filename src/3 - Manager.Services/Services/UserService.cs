@@ -32,7 +32,7 @@ namespace Manager.Services.Services{
 
             var user = _mapper.Map<User>(userDTO);
             user.Validate();
-            user.ChangePassword(_rijndaelCryptography.Encrypt(userDTO.Password));
+            user.ChangePassword(_rijndaelCryptography.Encrypt(user.Password));
 
             var userCreated = await _userRepository.Create(user);
 
@@ -47,7 +47,7 @@ namespace Manager.Services.Services{
 
             var user = _mapper.Map<User>(userDTO);
             user.Validate();
-            user.ChangePassword(_rijndaelCryptography.Encrypt(userDTO.Password));
+            user.ChangePassword(_rijndaelCryptography.Encrypt(user.Password));
 
             var userUpdated = await _userRepository.Update(user);
 
