@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="33.0.2" />
+    <PackageReference Include="FluentAssertions" Version="5.10.3" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
+    <PackageReference Include="Moq" Version="4.16.1" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="1.3.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Projects\API\" />
+    <Folder Include="Projects\Domain\" />
+    <Folder Include="Projects\Infra\" />
+    <Folder Include="Projects\Core\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\1 - Manager.API\Manager.API.csproj" />
+    <ProjectReference Include="..\2 - Manager.Domain\Manager.Domain.csproj" />
+    <ProjectReference Include="..\3 - Manager.Services\Manager.Services.csproj" />
+    <ProjectReference Include="..\4 - Manager.Infra\Manager.Infra.csproj" />
+    <ProjectReference Include="..\5 - Manager.Core\Manager.Core.csproj" />
+  </ItemGroup>
+
+</Project>
