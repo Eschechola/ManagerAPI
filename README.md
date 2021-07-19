@@ -14,6 +14,8 @@
   <li><a href="https://www.youtube.com/watch?v=B6aOYL2SExA&list=PLdhhExru1TXcTTm-Mpfg2tN5B_rOTNvzy&index=9&ab_channel=LucasEschechola">#5.2 - Adicionando JWT a Nossa API</a></li>
   <li><a href="https://www.youtube.com/watch?v=4wd2lkOObRQ&list=PLdhhExru1TXcTTm-Mpfg2tN5B_rOTNvzy&index=10&ab_channel=LucasEschechola">#6 - Encerramento</a></li>
   <li><a href="https://www.youtube.com/watch?v=_-Fgyv-v060&list=PLdhhExru1TXcTTm-Mpfg2tN5B_rOTNvzy&index=10&ab_channel=LucasEschechola">#7 - [BONUS] Aumentando a Segurança da API</a></li>
+  <li><a href="https://www.youtube.com/watch?v=u0W3zkTmgDA&t=71s">#8 - Iniciando nosso banco de dados no Azure!</a></li>
+  <li><a href="https://www.youtube.com/watch?v=E5V71NKHwIU">#8.1 - Configurando o Azure Key Vault e realizando o deploy</a></li>
 </ol>
 
 <br><br>
