@@ -1,8 +1,8 @@
-using Manager.Core.Exceptions;
 using System.Collections.Generic;
 using Manager.Domain.Validators;
 
-namespace Manager.Domain.Entities{
+namespace Manager.Domain.Entities
+{
     public class User : Base {
 
         //Propriedades
@@ -25,35 +25,23 @@ namespace Manager.Domain.Entities{
 
 
         //Comportamentos
-        public void ChangeName(string name){
+        public void SetName(string name){
             Name = name;
             Validate();
         }
 
-        public void ChangePassword(string password){
+        public void SetPassword(string password){
             Password = password;
             Validate();
         }
 
-        public void ChangeEmail(string email){
+        public void SetEmail(string email){
             Email = email;
             Validate();
         }
 
         //Autovalida
-        public override bool Validate()
-        {
-            var validator = new UserValidator();
-            var validation = validator.Validate(this);
-
-            if(!validation.IsValid){
-                foreach(var error in validation.Errors)
-                    _errors.Add(error.ErrorMessage);
-
-                throw new DomainException("Alguns campos estão inválidos, por favor corrija-os!", _errors);
-            }
-
-            return true;
-        }
+        public bool Validate()
+            => base.Validate(new UserValidator(), this);
     }
 }
