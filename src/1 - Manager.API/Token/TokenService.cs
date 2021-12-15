@@ -6,11 +6,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace Manager.API.Token{
-    public class TokenGenerator : ITokenGenerator
+    public class TokenService : ITokenService
     {
         private readonly IConfiguration _configuration;
 
-        public TokenGenerator(IConfiguration configuration)
+        public TokenService(IConfiguration configuration)
         {
             _configuration = configuration;
         }

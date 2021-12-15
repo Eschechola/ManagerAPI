@@ -13,16 +13,16 @@ namespace Manager.API.Controllers
     public class AuthController : BaseController
     {
         private readonly IConfiguration _configuration;
-        private readonly ITokenGenerator _tokenGenerator;
+        private readonly ITokenService _tokenService;
 
         public AuthController(
             IConfiguration configuration,
-            ITokenGenerator tokenGenerator,
+            ITokenService tokenService,
             INotificationHandler<DomainNotification> domainNotificationHandler)
             : base(domainNotificationHandler)
         {
             _configuration = configuration;
-            _tokenGenerator = tokenGenerator;
+            _tokenService = tokenService;
         }
 
         [HttpPost]
@@ -39,7 +39,7 @@ namespace Manager.API.Controllers
                     Success = true,
                     Data = new
                     {
-                        Token = _tokenGenerator.GenerateToken(),
+                        Token = _tokenService.GenerateToken(),
                         TokenExpires = DateTime.UtcNow.AddHours(int.Parse(_configuration["Jwt:HoursToExpire"]))
                     }
                 });

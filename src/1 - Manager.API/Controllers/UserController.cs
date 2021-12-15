@@ -31,10 +31,10 @@ namespace Manager.API.Controllers
         [HttpPost]
         [Authorize]
         [Route("/api/v1/users/create")]
-        public async Task<IActionResult> Create([FromBody] CreateUserViewModel userViewModel)
+        public async Task<IActionResult> CreateAsync([FromBody] CreateUserViewModel userViewModel)
         {
             var userDTO = _mapper.Map<UserDTO>(userViewModel);
-            var userCreated = await _userService.Create(userDTO);
+            var userCreated = await _userService.CreateAsync(userDTO);
 
             if (HasNotifications())
                 return Result();
@@ -43,17 +43,17 @@ namespace Manager.API.Controllers
             {
                 Message = "Usuário criado com sucesso!",
                 Success = true,
-                Data = userCreated
+                Data = userCreated.Value
             });
         }
 
         [HttpPut]
         [Authorize]
         [Route("/api/v1/users/update")]
-        public async Task<IActionResult> Update([FromBody] UpdateUserViewModel userViewModel)
+        public async Task<IActionResult> UpdateAsync([FromBody] UpdateUserViewModel userViewModel)
         {
             var userDTO = _mapper.Map<UserDTO>(userViewModel);
-            var userUpdated = await _userService.Update(userDTO);
+            var userUpdated = await _userService.UpdateAsync(userDTO);
 
             if (HasNotifications())
                 return Result();
@@ -62,16 +62,16 @@ namespace Manager.API.Controllers
             {
                 Message = "Usuário atualizado com sucesso!",
                 Success = true,
-                Data = userUpdated
+                Data = userUpdated.Value
             });
         }
 
         [HttpDelete]
         [Authorize]
         [Route("/api/v1/users/remove/{id}")]
-        public async Task<IActionResult> Remove(long id)
+        public async Task<IActionResult> RemoveAsync(long id)
         {
-            await _userService.Remove(id);
+            await _userService.RemoveAsync(id);
 
             if (HasNotifications())
                 return Result();
@@ -87,26 +87,26 @@ namespace Manager.API.Controllers
         [HttpGet]
         [Authorize]
         [Route("/api/v1/users/get/{id}")]
-        public async Task<IActionResult> Get(long id)
+        public async Task<IActionResult> GetAsync(long id)
         {
-            var user = await _userService.Get(id);
+            var user = await _userService.GetAsync(id);
 
             if (HasNotifications())
                 return Result();
 
-            if (user == null)
+            if (!user.HasValue)
                 return Ok(new ResultViewModel
                 {
                     Message = "Nenhum usuário foi encontrado com o ID informado.",
                     Success = true,
-                    Data = user
+                    Data = user.Value
                 });
 
             return Ok(new ResultViewModel
             {
                 Message = "Usuário encontrado com sucesso!",
                 Success = true,
-                Data = user
+                Data = user.Value
             });
         }
 
@@ -114,9 +114,9 @@ namespace Manager.API.Controllers
         [HttpGet]
         [Authorize]
         [Route("/api/v1/users/get-all")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> GetAsync()
         {
-            var allUsers = await _userService.Get();
+            var allUsers = await _userService.GetAllAsync();
 
             if (HasNotifications())
                 return Result();
@@ -125,7 +125,7 @@ namespace Manager.API.Controllers
             {
                 Message = "Usuários encontrados com sucesso!",
                 Success = true,
-                Data = allUsers
+                Data = allUsers.Value
             });
         }
 
@@ -133,40 +133,40 @@ namespace Manager.API.Controllers
         [HttpGet]
         [Authorize]
         [Route("/api/v1/users/get-by-email")]
-        public async Task<IActionResult> GetByEmail([FromQuery] string email)
+        public async Task<IActionResult> GetByEmailAsync([FromQuery] string email)
         {
-            var user = await _userService.GetByEmail(email);
+            var user = await _userService.GetByEmailAsync(email);
 
             if (HasNotifications())
                 return Result();
 
-            if (user == null)
+            if (!user.HasValue)
                 return Ok(new ResultViewModel
                 {
                     Message = "Nenhum usuário foi encontrado com o email informado.",
                     Success = true,
-                    Data = user
+                    Data = user.Value
                 });
 
             return Ok(new ResultViewModel
             {
                 Message = "Usuário encontrado com sucesso!",
                 Success = true,
-                Data = user
+                Data = user.Value
             });
         }
 
         [HttpGet]
         [Authorize]
         [Route("/api/v1/users/search-by-name")]
-        public async Task<IActionResult> SearchByName([FromQuery] string name)
+        public async Task<IActionResult> SearchByNameAsync([FromQuery] string name)
         {
-            var allUsers = await _userService.SearchByName(name);
+            var allUsers = await _userService.SearchByNameAsync(name);
 
             if (HasNotifications())
                 return Result();
 
-            if (allUsers.Count == 0)
+            if (!allUsers.HasValue)
                 return Ok(new ResultViewModel
                 {
                     Message = "Nenhum usuário foi encontrado com o nome informado",
@@ -186,14 +186,14 @@ namespace Manager.API.Controllers
         [HttpGet]
         [Authorize]
         [Route("/api/v1/users/search-by-email")]
-        public async Task<IActionResult> SearchByEmail([FromQuery] string email)
+        public async Task<IActionResult> SearchByEmailAsync([FromQuery] string email)
         {
-            var allUsers = await _userService.SearchByEmail(email);
+            var allUsers = await _userService.SearchByEmailAsync(email);
 
             if (HasNotifications())
                 return Result();
 
-            if (allUsers.Count == 0)
+            if (!allUsers.HasValue)
                 return Ok(new ResultViewModel
                 {
                     Message = "Nenhum usuário foi encontrado com o email informado",

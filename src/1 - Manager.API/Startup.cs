@@ -5,6 +5,10 @@ using EscNet.IoC.Cryptography;
 using manager.API.Middlewares;
 using Manager.API.Token;
 using Manager.API.ViewModes;
+using Manager.Core.Communication.Handlers;
+using Manager.Core.Communication.Mediator;
+using Manager.Core.Communication.Mediator.Interfaces;
+using Manager.Core.Communication.Messages.Notifications;
 using Manager.Domain.Entities;
 using Manager.Infra.Context;
 using Manager.Infra.Interfaces;
@@ -12,6 +16,7 @@ using Manager.Infra.Repositories;
 using Manager.Services.DTO;
 using Manager.Services.Interfaces;
 using Manager.Services.Services;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -19,6 +24,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
@@ -37,6 +43,7 @@ namespace Manager.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton(cfg => Configuration);
 
             #region Jwt
 
@@ -75,13 +82,27 @@ namespace Manager.API
 
             #endregion
 
-            #region DI
+            #region Database
+            
+            services.AddDbContext<ManagerContext>(options => options
+                .UseSqlServer(Configuration["ConnectionStrings:ManagerAPISqlServer"])
+                .EnableSensitiveDataLogging()
+                .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole())), 
+            ServiceLifetime.Transient);
 
-            services.AddSingleton(d => Configuration);
-            services.AddDbContext<ManagerContext>(options => options.UseSqlServer(Configuration["ConnectionStrings:USER_MANAGER"]), ServiceLifetime.Transient);
-            services.AddScoped<IUserService, UserService>();
+            #endregion
+
+            #region Repositories
+
             services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<ITokenGenerator, TokenGenerator>();
+
+            #endregion
+
+            #region Services
+            
+            services.AddScoped<IUserService, UserService>();
+            
+            services.AddScoped<ITokenService, TokenService>();
 
             #endregion
 
@@ -129,6 +150,14 @@ namespace Manager.API
             #region Cryptography
 
             services.AddRijndaelCryptography(Configuration["Cryptography"]);
+
+            #endregion
+
+            #region Mediator
+
+            services.AddMediatR(typeof(Startup));
+            services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+            services.AddScoped<IMediatorHandler, MediatorHandler>();
 
             #endregion
         }

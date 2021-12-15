@@ -1,16 +1,17 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Manager.Services.DTO;
+using Manager.Core.Structs;
 
 namespace Manager.Services.Interfaces{
     public interface IUserService{
-        Task<UserDTO> Create(UserDTO userDTO);
-        Task<UserDTO> Update(UserDTO userDTO);
-        Task Remove(long id);
-        Task<UserDTO> Get(long id);
-        Task<List<UserDTO>> Get();
-        Task<List<UserDTO>> SearchByName(string name);
-        Task<List<UserDTO>> SearchByEmail(string email);
-        Task<UserDTO> GetByEmail(string email);
+        Task<Optional<UserDTO>> CreateAsync(UserDTO userDTO);
+        Task<Optional<UserDTO>> UpdateAsync(UserDTO userDTO);
+        Task RemoveAsync(long id);
+        Task<Optional<UserDTO>> GetAsync(long id);
+        Task<Optional<IList<UserDTO>>> GetAllAsync();
+        Task<Optional<IList<UserDTO>>> SearchByNameAsync(string name);
+        Task<Optional<IList<UserDTO>>> SearchByEmailAsync(string email);
+        Task<Optional<UserDTO>> GetByEmailAsync(string email);
     }
 }
