@@ -42,5 +42,15 @@ namespace Manager.API.Utilities{
                 Data = null
             };
         }
+
+        public static ResultViewModel InternalServerErrorMessage()
+        {
+            return new ResultViewModel
+            {
+                Message = "Ocorreu um erro interno na aplicação, por favor tente novamente.",
+                Success = false,
+                Data = null
+            };
+        }
     }
 }
