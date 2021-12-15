@@ -1,5 +1,5 @@
 # ManagerAPI
-<p>Projeto criado na série de vídeos ensinando a construir uma API Rest utilizando .NET 5, EF Core, e boas práticas de arquitetura!</p>
+<p>Projeto criado na série de vídeos onde eu ensino a construir uma API Rest utilizando .NET 6, EF Core, e princiaplmente <strong>boas práticas de desenvolvimento e arquitetura!</strong></p>
 <br>
 <p>Aulas:</p>
 
