@@ -4,6 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using AutoMapper;
 using EscNet.Cryptography.Interfaces;
+using EscNet.Hashers.Interfaces.Algorithms;
 using Manager.Core.Communication.Mediator.Interfaces;
 using Manager.Core.Communication.Messages.Notifications;
 using Manager.Core.Enum;
@@ -19,18 +20,18 @@ namespace Manager.Services.Services
     public class UserService : IUserService{
         private readonly IMapper _mapper;
         private readonly IUserRepository _userRepository;
-        private readonly IRijndaelCryptography _rijndaelCryptography;
+        private readonly IArgon2IdHasher _argon2IdHasher;
         private readonly IMediatorHandler _mediator;
 
         public UserService(
             IMapper mapper,
             IUserRepository userRepository,
-            IRijndaelCryptography rijndaelCryptography, 
+            IArgon2IdHasher argon2IdHasher, 
             IMediatorHandler mediator)
         {
             _mapper = mapper;
             _userRepository = userRepository;
-            _rijndaelCryptography = rijndaelCryptography;
+            _argon2IdHasher = argon2IdHasher;
             _mediator = mediator;
         }
 
@@ -62,7 +63,7 @@ namespace Manager.Services.Services
                 return new Optional<UserDTO>();
             }
 
-            user.SetPassword(_rijndaelCryptography.Encrypt(user.Password));
+            user.SetPassword(_argon2IdHasher.Hash(user.Password));
 
             var userCreated = await _userRepository.CreateAsync(user);
 
@@ -93,7 +94,10 @@ namespace Manager.Services.Services
                 return new Optional<UserDTO>();
             }
 
-            user.SetPassword(_rijndaelCryptography.Encrypt(user.Password));
+            var sendedHashedPassword = _argon2IdHasher.Hash(user.Password);
+
+            if(sendedHashedPassword != userExists.Password)
+                user.SetPassword(sendedHashedPassword);
 
             var userUpdated = await _userRepository.UpdateAsync(user);
 
