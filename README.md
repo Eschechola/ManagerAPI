@@ -17,6 +17,8 @@
   <li><a href="https://www.youtube.com/watch?v=u0W3zkTmgDA&t=71s">#8 - Iniciando nosso banco de dados no Azure!</a></li>
   <li><a href="https://www.youtube.com/watch?v=E5V71NKHwIU">#8.1 - Configurando o Azure Key Vault e realizando o deploy</a></li>
   <li><a href="https://www.youtube.com/watch?v=eCHle8FyUDA&t=1s">#9 - Adicionando Testes Unitários</a></li>
+  <li><a href="https://youtu.be/BLtpNN24QcY">#10 - Migrando o Projeto Para .NET 6!</a></li>
+  <li><a href="https://youtu.be/A4VcObixknM">#11 - Refatorando Métodos e Implementando Hash</a></li>
 </ol>
 
 <br><br>
